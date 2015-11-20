@@ -4,13 +4,41 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.util.Log;
 
 public class MainActivity extends Activity {
+
+    final String LOGTAG = "DNC_LOG";
+
+    Switch appSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+
+    @Override
+    protected void onStart()    {
+        super.onStart();
+
+        appSwitch = (Switch) findViewById(R.id.switch1);
+
+        appSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if( isChecked )
+                    Log.v(LOGTAG, " Checked! ");
+                else
+                    Log.v(LOGTAG, " Unchecked! ");
+
+            }
+        });
+
+
     }
 
     @Override
