@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.util.Log;
 
+import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends Activity {
@@ -18,6 +21,9 @@ public class MainActivity extends Activity {
     Switch appSwitch;
     RadioGroup rg_ConnType;
 
+    Timer timer;
+    Button dummyButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +32,8 @@ public class MainActivity extends Activity {
         appSwitch = (Switch) findViewById(R.id.switch1);
         rg_ConnType = (RadioGroup) findViewById(R.id.rg_conntype);
 
-
+        dummyButton = (Button) findViewById(R.id.dummybutton1);
+        timer = new Timer(true);
     }
 
 
@@ -54,6 +61,13 @@ public class MainActivity extends Activity {
 
             }
         });
+
+        dummyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timer.schedule(new MyTimerTask(), 10000, 20000);
+            }
+        });
     }
 
     @Override
@@ -78,6 +92,14 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        timer.cancel();
+        timer.purge();
+    }
+
     private void disableRadioGroup(RadioGroup rg)   {
         for(int i = 0; i < rg.getChildCount(); i++) {
             rg.getChildAt(i).setEnabled(false);
@@ -93,9 +115,14 @@ public class MainActivity extends Activity {
 
 class MyTimerTask extends TimerTask {
 
+    final String LOGTAG = "DNC_LOG";
+
+
+
     @Override
     public void run() {
         //task to be run should be specified here
 
+        Log.v(LOGTAG, " Inside run() of MyTimerTask");
     }
 }
