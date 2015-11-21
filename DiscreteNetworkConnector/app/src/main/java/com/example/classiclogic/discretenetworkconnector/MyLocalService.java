@@ -18,6 +18,17 @@ public class MyLocalService extends Service {
         return null;
     }
 
+    @Override
+    public void onCreate()  {
+        showNotification("Creating Service!");
+    }
+
+
+    @Override
+    public void onDestroy() {
+        showNotification("Destroying Service!");
+    }
+
     private void showNotification(String message) {
         Log.v(LOGTAG, " MyLocalService: showNotification() " + message);
     }
