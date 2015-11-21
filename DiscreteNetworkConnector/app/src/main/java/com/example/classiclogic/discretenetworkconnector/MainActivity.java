@@ -9,6 +9,8 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.util.Log;
 
+import java.util.TimerTask;
+
 public class MainActivity extends Activity {
 
     final String LOGTAG = "DNC_LOG";
@@ -89,3 +91,11 @@ public class MainActivity extends Activity {
     }
 }
 
+class MyTimerTask extends TimerTask {
+
+    @Override
+    public void run() {
+        //task to be run should be specified here
+
+    }
+}
