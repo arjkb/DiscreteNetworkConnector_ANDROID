@@ -4,6 +4,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string name="title_switch_enable"> Application Status </string>
+
     <string name="title_radiobutton_nwtype"> Connection Type </string>
     <string name="radio_mobiledata"> Mobile Data </string>
     <string name="radio_wifi"> Wifi </string>
