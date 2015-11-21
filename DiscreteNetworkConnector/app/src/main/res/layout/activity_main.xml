@@ -7,21 +7,25 @@
     <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Switch"
+
         android:id="@+id/switch1"
-        android:layout_gravity="center_horizontal" />
+
+        android:layout_gravity="center_horizontal"
+        android:text="@string/title_switch_enable" />
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/rg_conntype">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/title_radiobutton_nwtype"
-            android:id="@+id/textView" />
+            android:id="@+id/textView"
+            android:textStyle="bold" />
 
         <RadioButton
             android:layout_width="wrap_content"
