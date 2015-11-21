@@ -1,7 +1,11 @@
 package com.example.classiclogic.discretenetworkconnector;
 
 import android.app.Activity;
+import android.app.Service;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +27,10 @@ public class MainActivity extends Activity {
 
     Timer timer;
     Button dummyButton;
+
+    private MyLocalService mLocalService;
+    private ServiceConnection mConnection;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +119,13 @@ public class MainActivity extends Activity {
             rg.getChildAt(i).setEnabled(true);
         }
     }
+
+
+    mConnection = new ServiceConnection()   {
+        public void onServiceConnected()    {
+
+        }
+    };
 }
 
 class MyTimerTask extends TimerTask {
